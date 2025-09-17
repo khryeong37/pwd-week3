@@ -11,7 +11,7 @@
   <body>
     <noscript>이 앱을 실행하려면 JavaScript를 활성화해야 합니다.</noscript>
     <!-- Netlify Forms를 위한 숨겨진 폼 -->
-    <form name="restaurant-submit" netlify hidden>
+    <form name="restaurant-submit" method="POST" data-netlify="true" hidden>
       <input type="text" name="restaurantName" />
       <select name="category"></select>
       <input type="text" name="location" />
