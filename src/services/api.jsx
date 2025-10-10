@@ -57,11 +57,13 @@ const fallbackRestaurants = [
   },
 ];
 
-const DEFAULT_BASE_URL = 'https://pwd-week4-khryeong37.onrender.com';
-const rawBaseUrl = import.meta.env?.VITE_API_BASE_URL || DEFAULT_BASE_URL;
-const API_BASE_URL = rawBaseUrl.endsWith('/')
-  ? rawBaseUrl.slice(0, -1)
-  : rawBaseUrl;
+// const DEFAULT_BASE_URL = 'https://pwd-week4-khryeong37.onrender.com';
+const rawBaseUrl = import.meta.env?.VITE_API_BASE_URL;
+const API_BASE_URL = rawBaseUrl
+  ? rawBaseUrl.endsWith('/')
+    ? rawBaseUrl.slice(0, -1)
+    : rawBaseUrl
+  : '/'; // 환경 변수가 없으면 상대 경로('/')를 사용하도록 폴백
 
 const api = axios.create({
   baseURL: API_BASE_URL,
