@@ -122,6 +122,14 @@ const restaurantAPI = {
     }
   },
 };
+const submissionAPI = {
+  // SubmitPage.jsx에서 데이터를 보낼 때 사용할 함수를 여기에 정의합니다.
+  createSubmission: async (data) => {
+    const response = await api.post('/api/submissions', data);
+    return response.data;
+  },
+  // 필요하다면 다른 submission 관련 API 함수도 추가합니다.
+};
 
 export { restaurantAPI, submissionAPI };
 export default api;
