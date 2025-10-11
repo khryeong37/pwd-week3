@@ -1,4 +1,5 @@
 /* src/components/SubmitRestaurant.jsx */
+import { submissionAPI } from '../services/api';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from '@emotion/styled';
@@ -130,23 +131,14 @@ function SubmitRestaurant() {
 
   const onSubmit = async (data) => {
     try {
-      // Netlify Forms로 제출
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          'form-name': 'restaurant-submit',
-          ...data,
-        }).toString(),
-      });
+      // ✅ Netlify Forms 코드를 삭제하고, submissionAPI를 사용합니다.
+      await submissionAPI.createSubmission(data);
 
-      if (response.ok) {
-        setSubmitted(true);
-        toast.success('맛집이 성공적으로 제보되었습니다! 🎉');
-        reset();
-        setTimeout(() => setSubmitted(false), 5000);
-      }
+      setSubmitted(true);
+      toast.success('맛집이 성공적으로 제보되었습니다! 🎉');
+      // ... (나머지 성공 로직) ...
     } catch (error) {
+      console.error('API 제출 오류:', error);
       toast.error('제출 중 오류가 발생했습니다.');
     }
   };
