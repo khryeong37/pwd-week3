@@ -85,7 +85,7 @@ api.interceptors.response.use(
   }
 );
 
-export const restaurantAPI = {
+const restaurantAPI = {
   getRestaurants: async () => {
     try {
       const response = await api.get('/api/restaurants');
