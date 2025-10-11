@@ -57,7 +57,6 @@ const fallbackRestaurants = [
   },
 ];
 
-// const DEFAULT_BASE_URL = 'https://pwd-week4-khryeong37.onrender.com';
 const rawBaseUrl = import.meta.env?.VITE_API_BASE_URL;
 const API_BASE_URL = rawBaseUrl
   ? rawBaseUrl.endsWith('/')
